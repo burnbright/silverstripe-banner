@@ -1,0 +1,15 @@
+{
+    "name": "burnbright/silverstripe-banner",
+    "description": "Provides a simple framework for adding banners to pages.",
+    "require": {
+        "lrc/silverstripe-link-field": "dev-master"
+    },
+    "license": "BSD-2",
+    "authors": [
+        {
+            "name": "Jeremy Shipman",
+            "email": "jeremy@burnbright.net"
+        }
+    ],
+    "minimum-stability": "dev"
+}
