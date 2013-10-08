@@ -4,6 +4,7 @@ class BannerImage extends DataObject{
 
 	private static $db = array(
 		'Title' => 'Varchar(255)',
+		'SubTitle' => 'Varchar(255)',
 		'Link' => 'LinkField'
 	);
 
