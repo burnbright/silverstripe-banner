@@ -14,4 +14,8 @@ class BannersExtension extends DataExtension{
 		);
 	}
 
+	public function getRandomBanner(){
+		return $this->owner->Banners()->sort("RAND()")->first();
+	}
+
 }
