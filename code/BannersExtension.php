@@ -6,7 +6,7 @@ class BannersExtension extends DataExtension{
 		'Banners' => 'BannerImage'
 	);
 
-	public function updateCMSFields($fields){
+	public function updateCMSFields(FieldList $fields){
 		$fields->addFieldsToTab("Root.Banners",
 			GridField::create("Banners",null,$this->owner->Banners(),
 				GridFieldConfig_RecordEditor::create()
