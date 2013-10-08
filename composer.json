@@ -1,6 +1,8 @@
 {
     "name": "burnbright/silverstripe-banner",
     "description": "Provides a simple framework for adding banners to pages.",
+    "type": "silverstripe-module",
+    "keywords": ["silverstripe", "banner", "carousel", "slider"],
     "require": {
         "lrc/silverstripe-link-field": "dev-master"
     },
