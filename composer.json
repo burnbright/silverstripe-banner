@@ -6,6 +6,9 @@
     "require": {
         "lrc/silverstripe-link-field": "dev-master"
     },
+    "suggests": {
+        "ajshort/silverstripe-gridfieldextensions": "dev-master"
+    },
     "license": "BSD-2",
     "authors": [
         {

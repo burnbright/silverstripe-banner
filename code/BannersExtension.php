@@ -9,9 +9,16 @@ class BannersExtension extends DataExtension{
 	public function updateCMSFields(FieldList $fields){
 		$fields->addFieldsToTab("Root.Banners",
 			GridField::create("Banners",null,$this->owner->Banners(),
-				GridFieldConfig_RecordEditor::create()
+				$config = GridFieldConfig_RecordEditor::create()
 			)
 		);
+		if(class_exists("GridFieldOrderableRows")){
+			$config->addComponent(new GridFieldOrderableRows());
+		}
+	}
+
+	public function getFirstBanner(){
+		return $this->owner->Banners()->first();
 	}
 
 	public function getRandomBanner(){
