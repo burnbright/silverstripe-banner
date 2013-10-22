@@ -15,7 +15,9 @@ class BannerImage extends DataObject{
 	);
 
 	private static $summary_fields = array(
-		'Image.Title','Title', 'Link'
+		'Image.CMSThumbnail' => 'Image',
+		'CMSTitle' => 'Title',
+		'Link' => 'Link'
 	);
 
 	private static $default_sort = "\"Sort\" ASC, \"ID\" ASC";
@@ -26,7 +28,17 @@ class BannerImage extends DataObject{
 		$fields->removeByName('Image');
 		$fields->insertBefore($image,'Title');
 		$fields->removeByName('ParentID');
+		$fields->removeByName('Sort');
 		return $fields;
+	}
+
+	function getCMSTitle(){
+		if($this->Title){
+			return $this->Title;
+		}
+		if($this->Image()){
+			return $this->Image()->Title;
+		}
 	}
 
 }
