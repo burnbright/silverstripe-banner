@@ -1,10 +1,19 @@
 <?php
 
+namespace Burnbright\SilverstripeBanner;
+
+use BannerImage;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Forms\GridField\GridField;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+
 class BannersExtension extends DataExtension
 {
     
     public static $has_many = array(
-        'Banners' => 'BannerImage'
+        'Banners' => BannerImage::class
     );
 
     public function updateCMSFields(FieldList $fields)

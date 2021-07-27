@@ -4,10 +4,13 @@
     "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "banner", "carousel", "slider"],
     "require": {
-
+        "silverstripe/vendor-plugin": "^1",
+        "silverstripe/framework": "^4"
     },
-    "suggests": {
-
+    "autoload": {
+        "psr-4": {
+            "Burnbright\\SilverstripeBanner\\": "src/"
+        }
     },
     "license": "BSD-2",
     "authors": [
@@ -16,7 +19,6 @@
             "email": "jeremy@burnbright.net"
         }
     ],
-    "minimum-stability": "dev",
     "extra": {
 		"installer-name": "banner"
     }

@@ -1,24 +1,33 @@
 <?php
 
+namespace Burnbright\SilverstripeBanner;
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Permission;
+use Image;
+use Page;
+
 class BannerImage extends DataObject
 {
+
+    private static $table_name = "BannerImage";
 
     private static $db = array(
         'Title' => 'Varchar(255)',
         'SubTitle' => 'Varchar(255)',
-        'Link' => 'LinkField',
+        // 'Link' => 'LinkField', // TODO: support linking banners in ss4
         'Sort' => 'Int'
     );
 
     private static $has_one = array(
-        'Image' => 'Image',
-        'Parent' => 'Page'
+        'Image' => Image::class,
+        'Parent' => Page::class
     );
 
     private static $summary_fields = array(
         'Image.CMSThumbnail' => 'Image',
         'CMSTitle' => 'Title',
-        'Link' => 'Link'
+        // 'Link' => 'Link'
     );
 
     private static $default_sort = "\"Sort\" ASC, \"ID\" ASC";
@@ -44,22 +53,22 @@ class BannerImage extends DataObject
         }
     }
 
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return Permission::check("CMS_ACCESS_CMSMain");
     }
 
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         return Permission::check("CMS_ACCESS_CMSMain");
     }
 
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         return Permission::check("CMS_ACCESS_CMSMain");
     }
 
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         return Permission::check("CMS_ACCESS_CMSMain");
     }
