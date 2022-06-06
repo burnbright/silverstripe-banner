@@ -4,7 +4,7 @@ namespace Burnbright\SilverstripeBanner;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
-use Image;
+use SilverStripe\Assets\Image;
 use Page;
 
 class BannerImage extends DataObject
