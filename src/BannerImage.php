@@ -4,7 +4,9 @@ namespace Burnbright\SilverstripeBanner;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
-use Image;
+use SilverStripe\Assets\Image;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Forms\TreeDropdownField;
 use Page;
 
 class BannerImage extends DataObject
@@ -15,19 +17,19 @@ class BannerImage extends DataObject
     private static $db = array(
         'Title' => 'Varchar(255)',
         'SubTitle' => 'Varchar(255)',
-        // 'Link' => 'LinkField', // TODO: support linking banners in ss4
         'Sort' => 'Int'
     );
 
     private static $has_one = array(
         'Image' => Image::class,
-        'Parent' => Page::class
+        'Parent' => Page::class,
+        'Link' => SiteTree::class,
     );
 
     private static $summary_fields = array(
         'Image.CMSThumbnail' => 'Image',
         'CMSTitle' => 'Title',
-        // 'Link' => 'Link'
+        'Link.Title' => 'Link'
     );
 
     private static $default_sort = "\"Sort\" ASC, \"ID\" ASC";
@@ -40,6 +42,16 @@ class BannerImage extends DataObject
         $fields->insertBefore($image, 'Title');
         $fields->removeByName('ParentID');
         $fields->removeByName('Sort');
+
+        $fields->replaceField(
+        	'LinkID',
+        	TreeDropdownField::create(
+        		'LinkID',
+        		'Link',
+        		SiteTree::class
+        	)
+        );
+
         return $fields;
     }
 

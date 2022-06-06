@@ -2,7 +2,7 @@
 
 namespace Burnbright\SilverstripeBanner;
 
-use BannerImage;
+use Burnbright\SilverstripeBanner\BannerImage;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\GridField\GridField;
@@ -12,7 +12,7 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 class BannersExtension extends DataExtension
 {
     
-    public static $has_many = array(
+    private static $has_many = array(
         'Banners' => BannerImage::class
     );
 
